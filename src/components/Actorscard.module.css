@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.h2Container {
+    display: flex;
+    width: 100%;
+}
+
+.h2Container h2 {
+    font-size: 28px;
+    margin: 20px 0 40px 20px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.scrollContainer {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.actorCard {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 350px;
+    flex: 0 0 auto;
+    margin: 0 20px 20px 20px;
+}
+
+.actorCard h3 {
+    font-size: 18px;
+    margin: 7px 0 5px 0;
+}
+
+.actorCard p {
+    font-size: 16px;
+}
+
+.actorCard img {
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #000;
+    height: 225px;
+}

@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.h1 {
+    display: flex;
+    width: 100%;
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 20px;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 300px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.5s ease;
+}
+
+.cardContainer:hover {
+    transform: scale(1.1);
+}
+
+.cardContainer img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #000;
+}

@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    height: 40px;
+}
+
+.input {
+    max-height: 100%;
+    font-size: 18px;
+    background: none;
+    border-color: white;
+    border-radius: 20px 0 0 20px;
+    background-color: #ffffff30;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button {
+    width: 100px;
+    max-height: 100%;
+    background: linear-gradient(#F806CC, #FFED00);
+    border-radius: 0 20px 20px 0;
+    border: 1px solid;
+    color: white;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.button:hover {
+    background: linear-gradient(#FFED00, #F806CC);
+    cursor: pointer;
+}
