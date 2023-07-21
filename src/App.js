@@ -13,7 +13,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path='/VeXtV' element={<MediaList apiPoint='movie/now_playing' title='Aktuelle Kinofilme' mediaType='movie' mediaDetails='movie' />} />
+          <Route path='/' element={<MediaList apiPoint='movie/now_playing' title='Aktuelle Kinofilme' mediaType='movie' mediaDetails='movie' />} />
           <Route path='/movielist' element={<MediaList apiPoint='movie/popular' title='Beliebte Filme' mediaType='movie' mediaDetails='movie' />} />
           <Route path='/moviedetails/:id' element={<MediaDetails type='movie' />} />
           <Route path='/moviesearch/:suchbegriff' element={<MediaResults mediaType='movie' to='movie' />} />

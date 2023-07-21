@@ -1,7 +1,6 @@
 {
   "name": "film-datenbank",
   "version": "0.1.0",
-  "homepage": "http://marcus-philipp.github.io/VeXtV",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -46,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "eslint": "^8.44.0",
     "gh-pages": "^5.0.0",
     "jest": "^27.5.1"
