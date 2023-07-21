@@ -7,7 +7,7 @@ import Search from './Search';
 const NavBar = () => {
     return (
         <nav className={styles.container}>
-            <Link to='./' className={styles.logoLink}>
+            <Link to='./VeXtV' className={styles.logoLink}>
                 <img src={logo} alt='Logo' className={styles.icon} />
             </Link>
             <Link to='/movielist' className={styles.button}>Top Filme</Link>
