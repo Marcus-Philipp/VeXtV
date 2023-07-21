@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import styles from './Medialist.module.css';
+import { useMediaQuery } from 'react-responsive';
+import styles from '../styles/Medialist.module.css';
+import MediaDetails from './Mediadetails';
 
-const MediaList = (props) => {
+// Zeigt eine Liste von Medieninhalten an.
+const MediaList = ({ apiPoint, title, mediaType, mediaDetails }) => {
+    // Enthaelt Liste von Medien.
     const [items, setItems] = useState([]);
+    // FlippedCard speichert dei ID.
+    const [flippedCard, setFlippedCard] = useState(null);
+    // Initialisiert den Zustand des Ladeverhaltens.
+    const [isLoading, setIsLoading] = useState(true);
+
+    // isMobile erkennt, ob der Bildschirm kleiner oder gleich 1200px ist.
+    const isMobile = useMediaQuery({
+        query: '(max-width: 1200px)'
+    });
 
     useEffect(() => {
+        // Laden der Film- oder Seriendaten.
         const fetchItems = async () => {
+            setIsLoading(true);
             try {
-                const response = await axios.get(`https://api.themoviedb.org/3/${props.apiPoint}`, {
+                const response = await axios.get(`https://api.themoviedb.org/3/${apiPoint}`, {
                     params: {
-                        api_key: '6c2bdf00e3bc480f43673a145dd7985d',
+                        api_key: process.env.REACT_APP_MOVIEDB_API_KEY,
                         language: 'de-DE'
                     }
                 });
@@ -19,22 +34,45 @@ const MediaList = (props) => {
             } catch (error) {
                 console.error('error', error);
             }
+            // Aktualisierung des Ladezustandes wenn Daten geladen.
+            setIsLoading(false);
         };
 
+        // Sobald Daten geladen, wird die Funktion aufgerufen.
         fetchItems();
-    }, [props.apiPoint]);
+    }, [apiPoint]);
 
+    // Waehrend Daten abgerufen werden, wird eine Ladeanzeige dargestellt.
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
+
+    // Sobald die Daten geladen sind, wird auf Mobilgeraeten eine Flipeffekt angezeigt
+    // und auf den Desktopgeraeten wird eine Verlinkung zur Detailsseite erstellt.
     return (
         <div className={styles.container}>
             <div className={styles.h1}>
-                <h1>{props.title}</h1>
+                <h1>{title}</h1>
             </div>
             {items.map((item) => (
-                <div key={item.id} className={styles.cardContainer}>
-                    <Link to={`/${props.mediaType}details/${item.id}`}>
-                        <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title || item.name} />
-                    </Link>
-                </div>
+                isMobile ?
+                    <div key={item.id} className={styles.cardContainer}
+                        onClick={() => setFlippedCard(flippedCard === item.id ? null : item.id)}>
+                        <div className={`${styles.flipCardInner} ${flippedCard === item.id ? styles.flipped : ''}`}>
+                            <div className={styles.flipCardFront}>
+                                <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title || item.name} />
+                            </div>
+                            <div className={styles.flipCardBack}>
+                                <MediaDetails id={item.id} type={mediaDetails} />
+                            </div>
+                        </div>
+                    </div>
+                    :
+                    <div key={item.id} className={styles.cardContainer}>
+                        <Link to={`/${mediaType}details/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title || item.name} />
+                        </Link>
+                    </div>
             ))}
         </div>
     );

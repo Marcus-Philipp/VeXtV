@@ -34,3 +34,12 @@
     background: linear-gradient(#FFED00, #F806CC);
     cursor: pointer;
 }
+
+@media (max-width: 500px) {
+    .input {
+        max-height: 70%;
+    }
+    .button {
+        max-height: 70%;
+    }
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './Search.module.css';
+import styles from '../styles/Search.module.css';
 import { useLocation } from 'react-router-dom';
 
-const Search = () => {
+const Search = (props) => {
     const location = useLocation();
     const [suchbegriff, setSuchbegriff] = useState('');
     const [placeholder, setPlaceholder] = useState('');
@@ -34,7 +34,7 @@ const Search = () => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${props.className}`}>
             <input
                 className={styles.input}
                 type='text'

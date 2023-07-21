@@ -1,0 +1,98 @@
+.container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.h2Container {
+    display: flex;
+    width: 100%;
+}
+
+.h2Container h2 {
+    font-size: 28px;
+    margin: 20px 0 40px 20px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.scrollContainer {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.scrollContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.actorCard {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 350px;
+    flex: 0 0 auto;
+    margin: 0 20px 20px 20px;
+}
+
+.actorCard h3 {
+    font-size: 18px;
+    margin: 7px 0 5px 0;
+}
+
+.actorCard p {
+    font-size: 16px;
+}
+
+.actorCard img {
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #000;
+    height: 225px;
+}
+
+@media (max-width: 1200px) {
+    .scrollContainer {
+        height: 140px;
+        border-radius: 20px;
+    }
+    .actorCard {
+        width: 40px;
+        height: 50px;
+        margin: 5px 50px 90px 20px;
+    }
+
+    .h2Container {
+        justify-content: center;
+    }
+
+    .h2Container h2 {
+        font-size: 18px;
+        margin: 0 10px 10px 10px;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+    .actorCard h3 {
+        font-size: 12px;
+    }
+
+    .actorCard p {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .h2Container h2 {
+        font-size: 14px;
+    }
+}

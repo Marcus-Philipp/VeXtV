@@ -1,0 +1,111 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.h1 {
+    display: flex;
+    width: 100%;
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 20px;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 300px;
+    margin: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.cardContainer img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #000;
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.flipCardInner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flipCardFront, .flipCardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+}
+
+.flipCardFront {
+    background-color: #bbb;
+    color: black;
+}
+
+.flipCardBack {
+    display: flex;
+    align-items: flex-end;
+    background-color: #FFED00;
+    color: #F806CC;
+    transform: rotateY(180deg);
+}
+
+@media (min-width: 1200px) {
+    .cardContainer:hover {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 1200px) {
+    .h1 {
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .container {
+        margin: 20px;
+    }
+
+    .cardContainer {
+        width: 310px;
+        height: 450px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    .h1 {
+        justify-content: center;
+        font-size: 10px;
+    }
+
+    .container {
+        margin: 10px;
+    }
+
+    .cardContainer {
+        width: 100%;
+        height: 450px;
+    }
+}
