@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from '../styles/Seriescard.module.css';
@@ -19,6 +19,9 @@ const SeriesCard = ({ id: idProp, onSerieLoaded }) => {
     const [imageUrl, setImageUrl] = useState(null);
     // Initialisiert den Zustand des Ladeverhaltens.
     const [loading, setLoading] = useState(true);
+
+    // Ref fuer den .describe - Container.
+    const describeRef = useRef(null);
 
     // isMobile erkennt, ob der Bildschirm kleiner oder gleich 1200px ist.
     const isMobile = useMediaQuery({
@@ -68,6 +71,11 @@ const SeriesCard = ({ id: idProp, onSerieLoaded }) => {
             // Scrollt die Seite an den Anfang.
             window.scrollTo(0, 0);
         }
+        // Scrollt den .describe -Container an den Anfang
+        if (describeRef.current) {
+            describeRef.current.scrollTop = 0;
+        }
+
     }, [id]);
 
     // Wenn der Serie geladen wurde, wird onSerieLoaded aufgerufen.
@@ -116,7 +124,7 @@ const SeriesCard = ({ id: idProp, onSerieLoaded }) => {
                         <p>Benutzerbewertung</p>
                         <TrailerCard id={id} type='tv' />
                     </div>
-                    <div className={styles.describe}>
+                    <div className={styles.describe} ref={describeRef}>
                         <h2>Handlung</h2>
                         <p>{serie?.overview}</p>
                     </div>

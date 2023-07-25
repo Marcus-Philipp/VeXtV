@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from '../styles/Moviecard.module.css';
@@ -19,6 +19,9 @@ const MovieCard = ({ id: idProp, onMovieLoaded }) => {
     const [imageUrl, setImageUrl] = useState(null);
     // Initialisiert den Zustand des Ladeverhaltens.
     const [loading, setLoading] = useState(true);
+
+    // Ref fuer den .describe - Container.
+    const describeRef = useRef(null);
 
     // isMobile erkennt, ob der Bildschirm kleiner oder gleich 1200px ist.
     const isMobile = useMediaQuery({
@@ -68,6 +71,12 @@ const MovieCard = ({ id: idProp, onMovieLoaded }) => {
             // Scrollt die Seite an den Anfang.
             window.scrollTo(0, 0);
         }
+
+        // Scrollt den .describe -Container an den Anfang.
+        if (describeRef.current) {
+            describeRef.current.scrollTop = 0;
+        }
+
     }, [id]);
 
     // Wenn der Film geladen wurde, wird onMovieLoaded aufgerufen.
@@ -116,7 +125,7 @@ const MovieCard = ({ id: idProp, onMovieLoaded }) => {
                         <p>Benutzerbewertung</p>
                         <TrailerCard id={id} type='movie' />
                     </div>
-                    <div className={styles.describe}>
+                    <div className={styles.describe} ref={describeRef}>
                         <h2>Handlung</h2>
                         <p>{movie?.overview}</p>
                     </div>

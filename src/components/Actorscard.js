@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styles from '../styles/Actorscard.module.css';
 import defaultPicture from '../Standardbild.jpg';
@@ -8,6 +8,9 @@ const ActorsCard = ({ id, type }) => {
     // Initialisiert den Zustand der Schauspieler und des Ladeverhaltens.
     const [actors, setActors] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    // Ref fuer den .describe - Container.
+    const describeRef = useRef(null);
 
     useEffect(() => {
         // Laden der Schauspielerinformationen.
@@ -31,6 +34,11 @@ const ActorsCard = ({ id, type }) => {
 
         // Sobald Daten geladen, wird die Funktion aufgerufen.
         fetchActors();
+        // Scrollt den .describe -Container an den Anfang.
+        if (describeRef.current) {
+            describeRef.current.scrollTop = 0;
+        }
+
     }, [id, type]);
 
     // Waehrend Daten abgerufen werden, wird eine Ladeanzeige dargestellt.
@@ -44,7 +52,7 @@ const ActorsCard = ({ id, type }) => {
             <div className={styles.h2Container}>
                 <h2>Hauptdarsteller</h2>
             </div>
-            <div className={styles.scrollContainer}>
+            <div className={styles.scrollContainer} ref={describeRef}>
                 {actors && actors.map((actor) => (
                     <div className={styles.actorCard} key={actor.id}>
                         <img
