@@ -22,7 +22,7 @@
 }
 
 .scrollContainer::-webkit-scrollbar {
-    width: 12px;
+    width: 3px;
 }
 
 .scrollContainer::-webkit-scrollbar-track {

@@ -123,7 +123,7 @@
         text-shadow: 1px 1px 1px #000;
     }
     .describe::-webkit-scrollbar {
-        width: 12px;
+        width: 3px;
     }
 
     .describe::-webkit-scrollbar-track {
