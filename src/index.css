@@ -17,6 +17,23 @@ code {
     monospace;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F806CC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c1059e;
+}
+
 @media (max-width: 895px) {
     html {
       font-size: 10px;
